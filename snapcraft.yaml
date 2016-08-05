@@ -1,5 +1,5 @@
 name: hello-xiaoguo
-version: 1.0
+version: "1.0"
 architectures: [ all ]
 summary: The 'hello-world' of snaps
 description: |
@@ -10,6 +10,11 @@ description: |
     * hello-world.sh   - enter interactive shell that runs in app sandbox
     * hello-world      - simply output text
 confinement: strict
+type: app  #it can be gadget or framework
+
+#license: ./setup/license.txt
+#license-agreement: explicit
+#license-version: 1.0
 
 apps:
  env:
@@ -20,11 +25,13 @@ apps:
    command: bin/sh
  hello-world:
    command: bin/echo
+   plugs: [home,unity7,opengl]
  createfile:
    command: bin/createfile
  createfiletohome:
    command: bin/createfiletohome
-   plugs: [home]
+ writetocommon:
+   command: bin/writetocommon
 
 parts:
  hello:
